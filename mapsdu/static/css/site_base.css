@@ -27,13 +27,23 @@ body {
     padding-bottom: 0px;
     padding-top: 0px;
 }
-
-.content-wrap {
-  width: auto;
-  padding-left: 30px;
-  padding-top: 0px;
+body h1, body h2, body h3, body h4, body h5, body h6, body .h1, body .h2, body .h3, body .h4, body .h5, body .h6{
+    line-height: 36px;
 }
-
+.content-wrap {
+    padding-left: 0;
+    padding-top: 0;
+    width: 1140px;
+}
+.span12 {
+    width: 1140px;
+}
+.span8 {
+    width: 820px;
+}
+/*.span4 {
+    width: 500px;
+}*/
 [class*="span"] {
   margin-left: 0px;
 }
@@ -63,8 +73,28 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
   font-size: 15px;
   height: 43px;
 }
-
-
+/*-------------------------------------*/
+body .container {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 738px) {
+  body .container {
+    width: 720px;
+  }
+}
+@media (min-width: 962px) {
+  body .container {
+    width: 940px;
+  }
+}
+@media (min-width: 1170px) {/*might have to do the minus 30px on these min widths too*/
+  body .container {
+    width: 1140px;
+  }
+}
 
 /**
  * Stuff that is modal, like the permissions
