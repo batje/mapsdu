@@ -1,0 +1,9 @@
+mapsdu/__init__.py
+mapsdu/settings.py
+mapsdu/urls.py
+mapsdu/wsgi.py
+mapsdu.egg-info/PKG-INFO
+mapsdu.egg-info/SOURCES.txt
+mapsdu.egg-info/dependency_links.txt
+mapsdu.egg-info/not-zip-safe
+mapsdu.egg-info/top_level.txt

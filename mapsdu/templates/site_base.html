@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+{% load i18n avatar_tags announcements_tags %}
+{% block extra_head %}
+      <link href="/mapsdu/css/site_base.css" rel="stylesheet"/>
+      <link href="/mapsdu/css/bootstrap.css" rel="stylesheet"/>
+{% endblock %}
+{% block header %}
+<header class="navbar container navbar-default" role="banner" id="navbar">
+  <div class="container">
+    <div class="navbar-header">
+            <a title="Home" href="http://www.data.ug/" class="logo navbar-btn pull-left">
+        <img alt="Home" src="http://www.data.ug/sites/all/themes/dataugtheme/logo.png" style="width: 250px; height: 42px;">
+      </a>
+      
+      
+      <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+      <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+          <div class="navbar-collapse collapse">
+        <nav role="navigation">
+                      <ul class="menu nav navbar-nav"><li class="first leaf"><a href="http://www.data.ug/">Home</a></li>
+<li class="leaf"><a title="Datasets for Data.Ug" href="http://catalog.data.ug">Data</a></li>
+<li class="expanded dropdown"><a data-toggle="dropdown" class="dropdown-toggle" data-target="#" title="Maps on Data.Ug" href="http://maps.data.ug">Maps <span class="caret"></span></a>
+<ul class="dropdown-menu">
+<li id="nav_data" class="first leaf"><a title="Map layers about Uganda" href="http://maps.data.ug">Layers</a></li>
+<li id="nav_people" class="last leaf"><a title="Map Publishers" href="http://maps.data.ug/people">People</a></li>
+<li id="nav_search" class="last leaf"><a title="Advanced Map Search" href="http://maps.data.ug/search/form">Advance Map Search</a></li>
+</ul>
+</li>
+<li class="leaf"><a title="All documentation about Data.Ug" href="http://www.data.ug/book">Documentation</a></li>
+<li class="last leaf"><a title="News Items" href="http://www.data.ug/blog">News</a></li>
+</ul>                                            <div class="region region-navigation">
+    <section class="block block-ckan-search clearfix" id="block-ckan-search-ckan-search-block">
+
+      
+  <form action="http://catalog.data.ug/dataset" class="search-form form-inline" method="get" role="search">
+  <div class="input-group">
+    <input type="search" placeholder="Agriculture" class="search-field form-control" name="q" value="" data-strings="{&quot;targets&quot;:[&quot;Agriculture&quot;,&quot;Fishing&quot;,&quot;Housing&quot;]}" title="Example searches: Agriculture,Fishing,Housing" id="search-header">
+    <input type="hidden" value="score desc, name asc" name="sort">
+      <span class="input-group-btn">
+      <button class="search-submit btn btn-default" type="submit">
+           <i class="fa fa-search"></i>
+           <span class="sr-only">Search</span>
+       </button>
+    </span>
+  </div>
+</form>
+</section> <!-- /.block -->
+  </div>
+                  </nav>
+      </div>
+      </div>
+</header>
+                    {% if user.is_authenticated %}
+                      <li class="user-avatar">
+                        {% avatar user 20 %}
+                      </li>
+                      <li class="dropdown user">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                          {{ user.username }}
+                          <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a href="{{ user.get_profile.get_absolute_url }}"><i class="icon-user"></i> {% trans "Profile" %}</a></li>
+                          <li><a href="{% url "messages_inbox" %}"><i class="icon-inbox"></i> {% trans "Inbox" %}</a></li>
+                          {% if user.is_staff %}
+                            <li><a href="{% url "admin:index" %}"><i class="icon-cog"></i> {% trans "Admin" %}</a></li>
+                          {% endif %}
+                          {% if perms.announcements.can_manage %}
+                            <li><a href="{% url "announcements_list" %}"><i class="icon-bullhorn"></i> {% trans "Announcements" %}</a></li>
+                          {% endif %}
+                          {% if user.is_superuser %}
+                            <li><a href="{{ GEOSERVER_BASE_URL }}"><i class="icon-globe"></i> {% trans "GeoServer" %}</a></li>
+                          {% endif %}
+                          <li><a href="{% url "recent-activity" %}"><i class="icon-fire"></i> {% trans "Recent Activity" %}</a></li>
+                          <li class="divider"></li>
+                          <li><a href="{% url "account_logout" %}"><i class="icon-off"></i> {% trans "Log out" %}</a></li>
+                        </ul>
+                      </li> <!-- ./dropdown user -->
+                      <li class="divider-v">|</li>
+                      <li class="actions">
+                        <!--a href="#" rel="tooltip" title="{% trans 'Notifications' %}"><i class="icon-bullhorn"></i></a>
+                        <a href="#" rel="tooltip" title="{% trans 'Messages' %}"><i class="icon-envelope"></i></a-->
+                        <a href="{% url "data_upload" %}" rel="tooltip" title="{% trans 'Upload' %}"><i class="icon-upload-alt"></i></a>
+                        <a href="{% url "help" %}" rel="tooltip" title="{% trans 'Help' %}"><i class="icon-question-sign"></i></a>
+                      </li>
+                    {% endif %}
+  {% endblock %}
+{% block footer %}
+<footer class="footer container">
+    <div class="region region-footer well well-lg">
+    <section class="block block-multiblock clearfix" id="block-multiblock-2">
+  <form action="http://catalog.data.ug/dataset" class="search-form form-inline" method="get" role="search">
+  <div class="input-group">
+    <input type="search" placeholder="Agriculture" class="search-field form-control" name="q" value="" data-strings="{&quot;targets&quot;:[&quot;Agriculture&quot;,&quot;Fishing&quot;,&quot;Housing&quot;]}" title="Example searches: Agriculture,Fishing,Housing" id="search-footer">
+    <input type="hidden" value="score desc, name asc" name="sort">
+      <span class="input-group-btn">
+      <button class="search-submit btn btn-default" type="submit">
+           <i class="fa fa-search"></i>
+           <span class="sr-only">Search</span>
+       </button>
+    </span>
+  </div>
+</form>
+</section> <!-- /.block -->
+<section class="block block-system block-menu clearfix" id="block-system-main-menu">
+
+      
+  <ul class="menu nav"><li class="first leaf"><a href="http://www.data.ug/">Home</a></li>
+<li class="leaf"><a title="Datasets for Data.Ug" href="http://catalog.data.ug">Data</a></li>
+<li class="expanded dropdown"><a data-toggle="dropdown" class="dropdown-toggle" data-target="#" title="Maps on Data.Ug" href="http://maps.data.ug">Maps <span class="caret"></span></a><ul class="dropdown-menu"><li class="first leaf"><a title="Map layers about Uganda" href="http://maps.data.ug">Layers</a></li>
+<li class="last leaf"><a title="Map Publishers" href="http://maps.data.ug/people">People</a></li>
+</ul></li>
+<li class="leaf active-trail active"><a class="active-trail active" title="All documentation about Data.Ug" href="http://www.data.ug/book">Documentation</a></li>
+<li class="last leaf"><a title="News Items" href="http://www.data.ug/blog">News</a></li>
+</ul>
+</section> <!-- /.block -->
+<section class="block block-menu clearfix" id="block-menu-menu-content">
+
+      
+  <ul class="menu nav"><li class="first leaf"><a href="http://www.data.ug/about">About</a></li>
+  <li class="last leaf"><a title="Login to Geonode" href="http://maps.data.ug/account/login">Login</a></li>
+</ul>
+</section> <!-- /.block -->
+<section class="block block-menu clearfix" id="block-menu-menu-social-media">
+
+      
+  <ul class="menu nav"><li class="first leaf"><a title="Follow us on Facebook" href="https://www.facebook.com/datadotug">Facebook</a></li>
+<li class="last leaf"><a title="Follow us on Twitter" href="http://www.twitter.com/datadotug">Twitter</a></li>
+</ul>
+</section> <!-- /.block -->
+<section class="block block-system clearfix" id="block-system-powered-by">
+
+      
+  <span>Powered by <a href="http://www.geonode.org">Geonode</a></span>
+</section> <!-- /.block -->
+  </div>
+</footer>
+{% endblock %}

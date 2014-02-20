@@ -1,0 +1,74 @@
+
+/**
+ * Stuff to override the base Geonode theme that bootstrap didnt override
+ */
+
+html .navbar .nav > li > a {
+    -moz-text-decoration: none;
+    padding-bottom: 19.5px;
+    padding-top: 19.5px;
+    text-shadow: none;
+}
+
+html .navbar .nav {
+    display: block;
+    margin: inherit;
+    position: relative;
+}
+
+body {
+    background-attachment: none;
+    background-clip: none;
+    background-image: none;
+    background-origin: none;
+    background-position: 0 0;
+    background-repeat: none;
+    background-size: none;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+.content-wrap {
+  width: auto;
+  padding-left: 30px;
+  padding-top: 0px;
+}
+
+[class*="span"] {
+  margin-left: 0px;
+}
+
+html .pagination {
+  display: none;
+}
+
+footer.footer {
+    background: none;
+    bottom: auto;
+    color: #1FA5A4;
+    font-size: 15px;
+    height: auto;
+    left: auto;
+    padding-top: auto;
+    position: relative;
+    width: auto;
+}
+
+footer.footer a {
+    -moz-text-decoration: none;
+    color: #1FA5A4;
+}
+
+select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+  font-size: 15px;
+  height: 43px;
+}
+
+
+
+/**
+ * Stuff that is modal, like the permissions
+ */ 
+.modal, #modal_perms {
+  left: 400px;
+}
