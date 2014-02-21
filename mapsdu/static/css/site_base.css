@@ -27,19 +27,38 @@ body {
     padding-bottom: 0px;
     padding-top: 0px;
 }
+html body{
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;  
+    color: #240F0B;
+}
 body h1, body h2, body h3, body h4, body h5, body h6, body .h1, body .h2, body .h3, body .h4, body .h5, body .h6{
     line-height: 36px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+h2.page-title {
+    color: #240F0B;
+    font-family:  inherit;
+    font-size: 26px;
+    font-weight: normal;
+    letter-spacing: normal;
+    text-transform: none;
 }
 .content-wrap {
     padding-left: 0;
     padding-top: 0;
     width: 1140px;
 }
+.content-wrap form .form-actions{
+    text-align: left;
+}
 .span12 {
     width: 1140px;
 }
 .span8 {
     width: 820px;
+}
+.container .row{
+    margin: 0;
 }
 /*.span4 {
     width: 500px;
@@ -52,6 +71,38 @@ html .pagination {
   display: none;
 }
 
+body.data #subnav-tabs, body.maps #subnav-tabs, body.people #subnav-tabs, body.documents #subnav-tabs{
+  background-color: #F2F2F2;
+  border-bottom: 2px solid #240F0B;
+}
+
+body.search #subnav-tabs a.search, body.upload #subnav-tabs a.upload, body.explore #subnav-tabs a.explore{
+  background-color: #1FA5A4;
+}
+
+body.explore #subnav-tabs a.explore:hover{
+  background-color: #240F0B;
+}
+
+.tab-content .tools{
+  margin: 10px 0;
+}
+
+#slide-pane h2{
+  background-color: #1FA5A4;
+}
+
+.btn.btn-primary{
+  background-color: #F39C12;
+  outline: none;
+  box-shadow: none;
+  border: none medium;
+}
+.grid article {
+    border: 1px solid #F2F2F2;
+    height: 1%;
+    overflow: hidden;
+}
 footer.footer {
     background: none;
     bottom: auto;
@@ -68,17 +119,24 @@ footer.footer a {
     -moz-text-decoration: none;
     color: #1FA5A4;
 }
+/*footer search, I think we needed a special more definite "class" rather than multiblock*/
+.region-footer .block-multiblock{
+  float: right;
+}
 
 select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
   font-size: 15px;
   height: 43px;
 }
+body form input:focus{
+  border-color: #25397F;
+}
 /*-------------------------------------*/
 body .container {
-  margin-right: auto;
-  margin-left: auto;
-  padding-left: 15px;
-  padding-right: 15px;
+  /*margin-right: auto;
+  margin-left: auto;*/
+  padding-left: 0;
+  padding-right: 0;
 }
 @media (min-width: 738px) {
   body .container {
@@ -90,7 +148,7 @@ body .container {
     width: 940px;
   }
 }
-@media (min-width: 1170px) {/*might have to do the minus 30px on these min widths too*/
+@media (min-width: 1170px) {
   body .container {
     width: 1140px;
   }
